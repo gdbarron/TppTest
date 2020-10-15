@@ -140,7 +140,7 @@ if ($buildHelp.IsPresent) {
 # Write-Output 'Publishing: About help files'
 # Copy-Item -Path ./Source/en-US -Destination "$output/" -Recurse -Force
 
-$folders = @('Enum', 'Classes', 'Public', 'Private')
+$folders = @('Enum', 'Classes', 'Public', 'Private', 'Config')
 foreach ( $folder in $folders) {
     Copy-Item -Path ./Source/$folder -Destination "$output/" -Recurse -Force
 }
