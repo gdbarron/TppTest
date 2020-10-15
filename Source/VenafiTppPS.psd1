@@ -15,7 +15,7 @@ RootModule = 'VenafiTppPS.psm1'
 ModuleVersion = '2.0.5'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+    CompatiblePSEditions = @('Core', 'Desktop')
 
 # ID used to uniquely identify this module
 GUID = 'c753bf91-13c0-4ae0-9e43-dbf40b22c3be'
@@ -33,7 +33,7 @@ Copyright = '(c) 2018-2020 Greg Brownstein. All rights reserved.'
 Description = 'PowerShell module to access the features of Venafi Trust Protection Platform REST API'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '5.1'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -69,21 +69,7 @@ PowerShellVersion = '5.0'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Add-TppCertificateAssociation', 'ConvertTo-TppGuid', 
-               'ConvertTo-TppPath', 'Find-TppCertificate', 'Find-TppIdentity', 
-               'Find-TppObject', 'Get-TppAttribute', 'Get-TppCertificate', 
-               'Get-TppCertificateDetail', 'Get-TppCustomField', 
-               'Get-TppIdentityAttribute', 'Get-TppObject', 'Get-TppPermission', 
-               'Get-TppSystemStatus', 'Get-TppVersion', 'Get-TppWorkflowTicket', 
-               'Import-TppCertificate', 'Invoke-TppCertificateRenewal', 
-               'Invoke-TppRestMethod', 'Move-TppObject', 'New-TppCapiApplication', 
-               'New-TppCertificate', 'New-TppDevice', 'New-TppObject', 'New-TppPolicy', 
-               'New-TppSession', 'New-TppToken', 'Read-TppLog', 
-               'Remove-TppCertificate', 'Remove-TppCertificateAssociation', 
-               'Rename-TppObject', 'Revoke-TppCertificate', 'Revoke-TppToken', 
-               'Set-TppAttribute', 'Set-TppPermission', 
-               'Set-TppWorkflowTicketStatus', 'Test-TppIdentity', 'Test-TppObject', 
-               'Write-TppLog'
+    FunctionsToExport    = @('*')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
