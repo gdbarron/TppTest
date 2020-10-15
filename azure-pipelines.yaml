@@ -179,9 +179,8 @@ stages:
             inputs:
               command: push
               packagesToPush: '$(Pipeline.Workspace)/module/$(Folder)/*.nupkg'
-              vstsFeed: 'Testing'
+              publishVstsFeed: 'VenafiTppPS/Testing'
               allowPackageConflicts: true
-              nuGetFeedType: 'internal'
 
 - stage: Production
   displayName: PowerShell Gallery / GitHub Release
