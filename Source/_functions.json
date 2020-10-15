@@ -3,6 +3,8 @@
     "fileType": "functions",
     "files": [
         "./Private/*.ps1",
-        "./Public/*.ps1"
+        "./Public/*.ps1",
+        "./Classes/*.ps1",
+        "./Enum/*.ps1"
     ]
 }
