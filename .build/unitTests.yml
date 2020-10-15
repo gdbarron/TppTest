@@ -1,7 +1,7 @@
 parameters:
   os: ''
   buildHelp: 'true'
-  CodeCoverage: 'false'
+  CodeCoverage: 'false-dontrun'
 
 steps:
 - task: PowerShell@2
