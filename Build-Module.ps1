@@ -122,7 +122,7 @@ $output = [System.IO.Path]::GetFullPath($output)
 
 # Merge-File -inputFile ./Source/types/_types.json -outputDir $output
 # Merge-File -inputFile ./Source/formats/_formats.json -outputDir $output
-Merge-File -inputFile ./Source/_functions.json -outputDir $output
+Merge-File -inputFile ./Source/_functions.json -outputDir $output -verbose
 
 # Build the help
 if ($buildHelp.IsPresent) {
