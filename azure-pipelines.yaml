@@ -184,7 +184,6 @@ stages:
 
 - stage: Production
   displayName: PowerShell Gallery / GitHub Release
-  dependsOn: Testing
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/trunk'))
   jobs:
   - deployment: Deploy
