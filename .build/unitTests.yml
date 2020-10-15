@@ -34,6 +34,15 @@ steps:
     targetType: 'inline'
     script: 'Install-Module -Name Pester -Repository PSGallery -Force -AllowPrerelease -MinimumVersion "$(PESTER_VERSION)" -Scope CurrentUser -AllowClobber -SkipPublisherCheck'
 
+- task: PowerShell@2
+  displayName: 'Load module'
+  inputs:
+    pwsh: true
+    targetType: 'inline'
+    script: |
+      Import-Module .\dist\*.psd1
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
 - ${{ if eq(parameters.CodeCoverage, 'false') }}:
   - task: PowerShell@2
     displayName: 'Run PowerShell Unit Tests'
