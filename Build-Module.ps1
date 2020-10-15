@@ -149,6 +149,7 @@ $newValue = ((Get-ChildItem -Path "./Source/Public" -Filter '*.ps1').BaseName |
 
 (Get-Content "./Source/VenafiTppPS.psd1") -Replace ("FunctionsToExport.+", "FunctionsToExport = ($newValue)") | Set-Content "$output/VenafiTppPS.psd1"
 
+
 # if (-not $skipLibBuild.IsPresent) {
 #    Write-Output "  Building: C# project ($configuration config)"
 
