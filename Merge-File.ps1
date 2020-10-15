@@ -79,7 +79,7 @@ PS C:\> Merge-File -InputFile .\Source\Classes\classes.json
             Merge-Type $files | Add-Content $output
          }
          'functions' {
-            Merge-Function $files | Add-Content $output
+            Merge-Function $files | Add-Content -Path $output -Encoding utf8
          }
          Default {
             Merge-Class $files | Add-Content $output
