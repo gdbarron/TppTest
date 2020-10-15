@@ -137,8 +137,8 @@ if ($buildHelp.IsPresent) {
    }
 }
 
-# Write-Output 'Publishing: About help files'
-# Copy-Item -Path ./Source/en-US -Destination "$output/" -Recurse -Force
+Write-Output 'Publishing: About help files'
+Copy-Item -Path ./Source/en-US -Destination "$output/" -Recurse -Force
 
 Write-Output 'Publishing: Manifest file'
 Copy-Item -Path ./Source/VenafiTppPS.psm1 -Destination "$output/VenafiTppPS.psm1" -Force
