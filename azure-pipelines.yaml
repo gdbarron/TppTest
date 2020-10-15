@@ -45,7 +45,7 @@ stages:
           $manifest = Import-PowerShellDataFile .\dist\*.psd1
 
           # Import each module
-          $manifest.RequiredModules | ForEach-Object { Import-Module -Name $_ }
+          # $manifest.RequiredModules | ForEach-Object { Import-Module -Name $_ }
 
           $count = 0
           $r = Invoke-ScriptAnalyzer –Path ./dist –Recurse | Where-Object severity -ne "Information"
