@@ -179,8 +179,9 @@ stages:
             inputs:
               command: push
               packagesToPush: '$(Pipeline.Workspace)/module/$(Folder)/*.nupkg'
-              publishVstsFeed: 'Testing'
+              vstsFeed: 'Testing'
               allowPackageConflicts: true
+              nuGetFeedType: 'internal'
 
 - stage: Production
   displayName: PowerShell Gallery / GitHub Release
