@@ -130,7 +130,7 @@ if ($buildHelp.IsPresent) {
    Push-Location
    Set-Location ./.docs
    Try {
-      ./gen-help.ps1
+      ./gen-help.ps1 -verbose
    }
    Finally {
       Pop-Location
