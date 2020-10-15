@@ -84,12 +84,12 @@ stages:
         artifact: 'module'
       condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
 
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Tests'
-      inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)/Tests'
-        artifact: 'test'
-      condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
+    # - task: PublishPipelineArtifact@1
+    #   displayName: 'Publish Tests'
+    #   inputs:
+    #     targetPath: '$(Build.ArtifactStagingDirectory)/Tests'
+    #     artifact: 'test'
+    #   condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
 
   - job: Windows_Phase
     displayName: Build Windows
@@ -125,18 +125,18 @@ stages:
             inputs:
               versionSpec: 5.2.0
 
-          - task: PowerShell@2
-            displayName: 'Install Module Dependencies'
-            inputs:
-              pwsh: true
-              targetType: 'inline'
-              script: |
-                # Load the psd1 file so you can read the required modules and install them
-                $manifest = Import-PowerShellDataFile .\$(Folder)\*.psd1
+          # - task: PowerShell@2
+          #   displayName: 'Install Module Dependencies'
+          #   inputs:
+          #     pwsh: true
+          #     targetType: 'inline'
+          #     script: |
+          #       # Load the psd1 file so you can read the required modules and install them
+          #       $manifest = Import-PowerShellDataFile .\$(Folder)\*.psd1
 
-                # Install each module
-                $manifest.RequiredModules | ForEach-Object { Install-Module -Name $_ -Repository PSGallery -Force -Scope CurrentUser -Verbose }
-              workingDirectory: '$(Pipeline.Workspace)/module'
+          #       # Install each module
+          #       $manifest.RequiredModules | ForEach-Object { Install-Module -Name $_ -Repository PSGallery -Force -Scope CurrentUser -Verbose }
+          #     workingDirectory: '$(Pipeline.Workspace)/module'
 
           - task: PowerShell@2
             displayName: 'Compute Version Number'
@@ -179,7 +179,7 @@ stages:
             inputs:
               command: push
               packagesToPush: '$(Pipeline.Workspace)/module/$(Folder)/*.nupkg'
-              publishVstsFeed: 'VenafiTppPS'
+              publishVstsFeed: 'Testing'
               allowPackageConflicts: true
 
 - stage: Production
@@ -203,18 +203,18 @@ stages:
             inputs:
               versionSpec: 5.2.0
 
-          - task: PowerShell@2
-            displayName: 'Install Module Dependencies'
-            inputs:
-              pwsh: true
-              targetType: 'inline'
-              script: |
-                # Load the psd1 file so you can read the required modules and install them
-                $manifest = Import-PowerShellDataFile .\$(Folder)\*.psd1
+          # - task: PowerShell@2
+          #   displayName: 'Install Module Dependencies'
+          #   inputs:
+          #     pwsh: true
+          #     targetType: 'inline'
+          #     script: |
+          #       # Load the psd1 file so you can read the required modules and install them
+          #       $manifest = Import-PowerShellDataFile .\$(Folder)\*.psd1
 
-                # Install each module
-                $manifest.RequiredModules | ForEach-Object { Install-Module -Name $_ -Repository PSGallery -F -Scope CurrentUser }
-              workingDirectory: '$(Pipeline.Workspace)/module'
+          #       # Install each module
+          #       $manifest.RequiredModules | ForEach-Object { Install-Module -Name $_ -Repository PSGallery -F -Scope CurrentUser }
+          #     workingDirectory: '$(Pipeline.Workspace)/module'
 
           - task: PowerShell@2
             displayName: 'Create NuSpec from PSD1'
