@@ -103,7 +103,7 @@ function Start-IntegrationTests {
 
 if ($installDep.IsPresent -or $analyzeScript.IsPresent) {
    # Load the psd1 file so you can read the required modules and install them
-   $manifest = Import-PowerShellDataFile .\Source\VSTeam.psd1
+   $manifest = Import-PowerShellDataFile .\Source\VenafiTppPS.psd1
 
    # Install each module
    if ($manifest.RequiredModules) {
@@ -120,8 +120,8 @@ else {
 
 $output = [System.IO.Path]::GetFullPath($output)
 
-Merge-File -inputFile ./Source/types/_types.json -outputDir $output
-Merge-File -inputFile ./Source/formats/_formats.json -outputDir $output
+# Merge-File -inputFile ./Source/types/_types.json -outputDir $output
+# Merge-File -inputFile ./Source/formats/_formats.json -outputDir $output
 Merge-File -inputFile ./Source/_functions.json -outputDir $output
 
 # Build the help
@@ -141,30 +141,30 @@ Write-Output 'Publishing: About help files'
 Copy-Item -Path ./Source/en-US -Destination "$output/" -Recurse -Force
 
 Write-Output 'Publishing: Manifest file'
-Copy-Item -Path ./Source/VSTeam.psm1 -Destination "$output/VSTeam.psm1" -Force
+Copy-Item -Path ./Source/VenafiTppPS.psm1 -Destination "$output/VenafiTppPS.psm1" -Force
 
 Write-Output '  Updating: Functions To Export'
 $newValue = ((Get-ChildItem -Path "./Source/Public" -Filter '*.ps1').BaseName |
    ForEach-Object -Process { Write-Output "'$_'" }) -join ','
 
-(Get-Content "./Source/VSTeam.psd1") -Replace ("FunctionsToExport.+", "FunctionsToExport = ($newValue)") | Set-Content "$output/VSTeam.psd1"
+(Get-Content "./Source/VenafiTppPS.psd1") -Replace ("FunctionsToExport.+", "FunctionsToExport = ($newValue)") | Set-Content "$output/VenafiTppPS.psd1"
 
-if (-not $skipLibBuild.IsPresent) {
-   Write-Output "  Building: C# project ($configuration config)"
+# if (-not $skipLibBuild.IsPresent) {
+#    Write-Output "  Building: C# project ($configuration config)"
 
-   if (-not $(Test-Path -Path $output\bin)) {
-      New-Item -Path $output\bin -ItemType Directory | Out-Null
-   }
+#    if (-not $(Test-Path -Path $output\bin)) {
+#       New-Item -Path $output\bin -ItemType Directory | Out-Null
+#    }
 
-   $buildOutput = dotnet build --nologo --verbosity quiet --configuration $configuration | Out-String
+#    $buildOutput = dotnet build --nologo --verbosity quiet --configuration $configuration | Out-String
 
-   Copy-Item -Destination "$output\bin\vsteam-lib.dll" -Path ".\Source\Classes\bin\$configuration\netstandard2.0\vsteam-lib.dll" -Force
-   Copy-Item -Destination "$output\bin\Trackyon.System.Management.Automation.Abstractions.dll" -Path ".\Source\Classes\bin\$configuration\netstandard2.0\Trackyon.System.Management.Automation.Abstractions.dll" -Force
+#    Copy-Item -Destination "$output\bin\VenafiTppPS-lib.dll" -Path ".\Source\Classes\bin\$configuration\netstandard2.0\VenafiTppPS-lib.dll" -Force
+#    Copy-Item -Destination "$output\bin\Trackyon.System.Management.Automation.Abstractions.dll" -Path ".\Source\Classes\bin\$configuration\netstandard2.0\Trackyon.System.Management.Automation.Abstractions.dll" -Force
 
-   if (-not ($buildOutput | Select-String -Pattern 'succeeded')) {
-      Write-Output $buildOutput
-   }
-}
+#    if (-not ($buildOutput | Select-String -Pattern 'succeeded')) {
+#       Write-Output $buildOutput
+#    }
+# }
 
 Write-Output "Publishing: Complete to $output"
 # run the unit tests with Pester
@@ -220,14 +220,14 @@ if ($runTests.IsPresent) {
 # reload the just built module
 if ($ipmo.IsPresent -or $analyzeScript.IsPresent -or $runIntegrationTests.IsPresent) {
    # module needs to be unloaded if present
-   if ((Get-Module VSTeam)) {
-      Remove-Module VSTeam
+   if ((Get-Module VenafiTppPS)) {
+      Remove-Module VenafiTppPS
    }
 
    Write-Host " Importing: Module"
 
-   Import-Module "$output/VSTeam.psd1" -Force
-   Set-VSTeamAlias
+   Import-Module "$output/VenafiTppPS.psd1" -Force
+   Set-VenafiTppPSAlias
 }
 
 # Run this last so the results can be seen even if tests were also run
