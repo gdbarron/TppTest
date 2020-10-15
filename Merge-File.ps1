@@ -86,7 +86,7 @@ PS C:\> Merge-File -InputFile .\Source\Classes\classes.json
          }
       }
 
-      Get-Content $output | Out-File -encoding utf8 -FilePath $output -Force
+      (Get-Content $output) | Out-File -encoding utf8 -FilePath $output
    }
    catch {
       throw $_
