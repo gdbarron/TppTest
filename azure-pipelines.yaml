@@ -311,19 +311,11 @@ stages:
               artifact: 'Package'
               publishLocation: 'pipeline'
 
-          - task: NuGetCommand@2
-            displayName: 'Push Module'
-            inputs:
-              command: push
-              packagesToPush: '$(Pipeline.Workspace)/module/$(Folder)/*.nupkg'
-              nuGetFeedType: external
-              publishFeedCredentials: 'PowerShell Gallery'
-
           - task: GithubRelease@0
             displayName: 'Create GitHub Release'
             inputs:
-              gitHubConnection: Darquewarrior
-              repositoryName: gdbarron/VenafiTppPS
+              gitHubConnection: github.com_gdbarron
+              repositoryName: gdbarron/TppTest
               tagSource: manual
               tag: v$(PACKAGE_VERSION)
               addChangeLog: true
