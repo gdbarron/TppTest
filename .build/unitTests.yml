@@ -14,18 +14,18 @@ steps:
     ${{ if eq(parameters.buildHelp, 'true') }}:
       script: '.\Build-Module.ps1 -installDep -buildHelp -configuration Release'
 
-- ${{ if eq(parameters.os, 'Windows') }}:
-  - task: DotNetCoreCLI@2
-    displayName: 'Run C# Unit Tests with code coverage'
-    inputs:
-      command: 'test'
-      arguments: '--collect:"Code Coverage"'
+# - ${{ if eq(parameters.os, 'Windows') }}:
+#   - task: DotNetCoreCLI@2
+#     displayName: 'Run C# Unit Tests with code coverage'
+#     inputs:
+#       command: 'test'
+#       arguments: '--collect:"Code Coverage"'
 
-- ${{ if ne(parameters.os, 'Windows') }}:
-  - task: DotNetCoreCLI@2
-    displayName: 'Run C# Unit Tests'
-    inputs:
-      command: 'test'
+# - ${{ if ne(parameters.os, 'Windows') }}:
+#   - task: DotNetCoreCLI@2
+#     displayName: 'Run C# Unit Tests'
+#     inputs:
+#       command: 'test'
 
 - task: PowerShell@2
   displayName: 'Install Pester'
