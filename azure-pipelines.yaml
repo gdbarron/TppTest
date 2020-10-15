@@ -84,23 +84,6 @@ stages:
         artifact: 'module'
       condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
 
-    - task: CopyFiles@2
-      displayName: 'Copy Integration Tests Artifacts Folder'
-      inputs:
-        Contents: |
-          Tests/SampleFiles/**
-          Tests/integration/tests/**
-        TargetFolder: '$(build.artifactstagingdirectory)/Tests'
-      condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
-
-    - task: CopyFiles@2
-      displayName: 'Copy psd1 to Integration Tests Artifacts Folder'
-      inputs:
-        Contents: |
-          dist/*.psd1
-        TargetFolder: '$(build.artifactstagingdirectory)/Tests'
-      condition: and(succeeded(), eq(variables['System.PullRequest.IsFork'], false))
-
     - task: PublishPipelineArtifact@1
       displayName: 'Publish Tests'
       inputs:
@@ -210,42 +193,6 @@ stages:
               packagesToPush: '$(Pipeline.Workspace)/module/$(Folder)/*.nupkg'
               publishVstsFeed: 'VenafiTppPS'
               allowPackageConflicts: true
-
-- stage: Testing
-  displayName: Testing stage
-  dependsOn: Package
-  jobs:
-
-  - template: .build/integrationTests.yml
-    parameters:
-      displayName: 'Linux TFS 2018'
-      os: 'Linux'
-      pool: 'ubuntu-16.04'
-      start2018: 'true'
-      stop2018: 'true'
-      name: 'LinuxTFS2018'
-      apiVersion: 'TFS2018'
-      account: 'http://winbldbox3.centralus.cloudapp.azure.com:8080/tfs/defaultcollection'
-
-  - template: .build/integrationTests.yml
-    parameters:
-      displayName: 'Windows AzD'
-      os: 'Windows'
-      pool: 'windows-latest'
-      name: 'windowsAzD'
-      apiVersion: 'VSTS'
-      account: 'tooltester'
-
-  - template: .build/integrationTests.yml
-    parameters:
-      displayName: 'macOS TFS 2017'
-      os: 'macOS'
-      pool: 'macOS-latest'
-      start2017: 'true'
-      stop2017: 'true'
-      name: 'macOSTFS2017'
-      apiVersion: 'TFS2017'
-      account: 'http://sonarqube.eastus2.cloudapp.azure.com:8080/tfs/VenafiTppPS'
 
 - stage: Production
   displayName: PowerShell Gallery / GitHub Release
