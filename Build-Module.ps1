@@ -252,6 +252,10 @@ if ($buildHelp.IsPresent) {
    # } Finally {
    #    Pop-Location
    # }
+   Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
+   Install-Module -Name platyPS -Scope CurrentUser -Force -Confirm:$false
+   Import-Module platyPS
+
    $branch = $env:BUILD_SOURCEBRANCHNAME
 
    # $manifestPath = '..\Source\VenafiTppPS.psd1'
