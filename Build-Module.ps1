@@ -91,8 +91,7 @@ function Start-IntegrationTests {
          $pesterArgs.Run.PassThru = $true
          $intTestResults = Invoke-Pester -Configuration $pesterArgs
          $intTestResults.Failed | Select-Object -ExpandProperty ErrorRecord
-      }
-      else {
+      } else {
          $pesterArgs.Output.Verbosity = $testOutputLevel
          Invoke-Pester -Configuration $pesterArgs
       }
@@ -107,14 +106,13 @@ if ($installDep.IsPresent -or $analyzeScript.IsPresent) {
 
    # Install each module
    if ($manifest.RequiredModules) {
-      $manifest.RequiredModules | ForEach-Object { if (-not (get-module $_ -ListAvailable)) { Write-Host "Installing $_"; Install-Module -SkipPublisherCheck -Name $_ -Repository PSGallery -F -Scope CurrentUser } }
+      $manifest.RequiredModules | ForEach-Object { if (-not (Get-Module $_ -ListAvailable)) { Write-Host "Installing $_"; Install-Module -SkipPublisherCheck -Name $_ -Repository PSGallery -F -Scope CurrentUser } }
    }
 }
 
 if ([System.IO.Path]::IsPathRooted($outputDir)) {
    $output = $outputDir
-}
-else {
+} else {
    $output = Join-Path (Get-Location) $outputDir
 }
 
@@ -164,7 +162,7 @@ Write-Output "Publishing: Complete to $output"
 if ($runTests.IsPresent) {
    if (-not $skipLibBuild.IsPresent -and $configuration -ne 'LibOnly') {
       Write-Output '   Testing: C# project (unit)'
-      $testOutput = dotnet test --nologo --configuration $configuration | Out-String
+      $testOutput = dotnet.exe test --nologo --configuration $configuration | Out-String
 
       if (-not ($testOutput | Select-String -Pattern 'Test Run Successful')) {
          Write-Output $testOutput
@@ -189,8 +187,7 @@ if ($runTests.IsPresent) {
       $pesterArgs.CodeCoverage.OutputFormat = 'JaCoCo'
       $pesterArgs.CodeCoverage.OutputPath = "coverage.xml"
       $pesterArgs.CodeCoverage.Path = "./Source/**/*.ps1"
-   }
-   else {
+   } else {
       $pesterArgs.Run.PassThru = $false
    }
 
@@ -203,8 +200,7 @@ if ($runTests.IsPresent) {
       $pesterArgs.Run.PassThru = $true
       $unitTestResults = Invoke-Pester -Configuration $pesterArgs
       $unitTestResults.Failed | Select-Object -ExpandProperty ErrorRecord
-   }
-   else {
+   } else {
       $pesterArgs.Output.Verbosity = $testOutputLevel
       Invoke-Pester -Configuration $pesterArgs
    }
@@ -252,9 +248,10 @@ if ($buildHelp.IsPresent) {
    # } Finally {
    #    Pop-Location
    # }
-   Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
-   Install-Module -Name platyPS -Scope CurrentUser -Force -Confirm:$false
-   Import-Module platyPS
+   # Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
+   if (-not (Get-Module platyPS -ListAvailable)) {
+      Install-Module platyPS -Scope CurrentUser -Force
+   }
 
    $branch = $env:BUILD_SOURCEBRANCHNAME
 
