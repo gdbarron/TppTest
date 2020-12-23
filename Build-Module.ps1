@@ -275,7 +275,7 @@ if ($buildHelp.IsPresent) {
       $ReleaseText | Set-Content ".\docs\RELEASE.md"
       $YMLText = "$YMLtext  - Release Notes: RELEASE.md`n"
    }
-   if ((Test-Path -Path $changeLogPath)) {
+   if ((Test-Path -Path $'.\changelog.md')) {
       $YMLText = "$YMLtext  - Change Log: ChangeLog.md`n"
    }
    $YMLText = "$YMLtext  - Functions:`n"
