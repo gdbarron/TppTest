@@ -4,7 +4,7 @@ if ((Test-Path ..\docs) -eq $false) {
     New-Item -ItemType Directory -Name ..\docs
 }
 
-Get-ChildItem ..\docs | Remove-Item -Force
+Get-ChildItem ..\docs | Remove-Item -Force -Recurse
 
 Write-Verbose 'Merging Markdown files'
 if (-not (Get-Module Trackyon.Markdown -ListAvailable)) {
