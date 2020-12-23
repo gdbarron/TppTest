@@ -267,7 +267,7 @@ if ($buildHelp.IsPresent) {
    $YMLtext = (Get-Content ".\header-mkdocs.yml") -join "`n"
    $YMLtext = "$YMLtext`n"
    $parameters = @{
-      Path        = $releaseNotesPath
+      Path        = '.\release.md'
       ErrorAction = 'SilentlyContinue'
    }
    $ReleaseText = (Get-Content @parameters) -join "`n"
@@ -283,7 +283,7 @@ if ($buildHelp.IsPresent) {
    $parameters = @{
       Recurse     = $true
       Force       = $true
-      Path        = "$projectRoot\docs\functions"
+      Path        = ".\docs\functions"
       ErrorAction = 'SilentlyContinue'
    }
    $null = Remove-Item @parameters
