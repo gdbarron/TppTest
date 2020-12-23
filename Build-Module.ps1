@@ -240,7 +240,7 @@ if ($runIntegrationTests.IsPresent) {
 
 # Build the help
 if ($buildHelp.IsPresent) {
-   Write-Output 'Processing: External help file'
+   Write-Output 'Building help'
    # Push-Location
    # Set-Location ./.docs
    # Try {
@@ -259,7 +259,7 @@ if ($buildHelp.IsPresent) {
    $manifest = Import-PowerShellDataFile .\Source\VenafiTppPS.psd1
    [version]$version = $Manifest.ModuleVersion
 
-   "Loading Module from $manifestPath to update docs"
+   # "Loading Module from $manifestPath to update docs"
    # Remove-Module VenafiTppPS -Force -ea SilentlyContinue -Verbose
    # platyPS + AppVeyor requires the module to be loaded in Global scope
    Import-Module "$output/VenafiTppPS.psd1" -Force
@@ -319,7 +319,7 @@ if ($buildHelp.IsPresent) {
       git.exe add *.md
       git.exe add ".\mkdocs.yml"
       git.exe status -v
-      git.exe commit -m "Updated VenafiTppPS version to $version ***NO_CI***"
+      git.exe commit -m "Updated to v$version ***NO_CI***"
 
       # if we are performing pull request validation, do not push the code to the repo
       if ( $env:BUILD_REASON -eq 'PullRequest') {
