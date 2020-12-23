@@ -260,9 +260,9 @@ if ($buildHelp.IsPresent) {
    [version]$version = $Manifest.ModuleVersion
 
    "Loading Module from $manifestPath to update docs"
-   Remove-Module VenafiTppPS -Force -ea SilentlyContinue -Verbose
+   # Remove-Module VenafiTppPS -Force -ea SilentlyContinue -Verbose
    # platyPS + AppVeyor requires the module to be loaded in Global scope
-   Import-Module "$output/VenafiTppPS.psd1"
+   Import-Module "$output/VenafiTppPS.psd1" -Force
 
    #Build YAMLText starting with the header
    $YMLtext = (Get-Content ".\header-mkdocs.yml") -join "`n"
@@ -295,7 +295,7 @@ if ($buildHelp.IsPresent) {
    }
    $null = New-Item @Params
    $Params = @{
-      Module       = $ModuleName
+      Module       = 'VenafiTppPS'
       Force        = $true
       OutputFolder = ".\docs\functions"
       NoMetadata   = $true
