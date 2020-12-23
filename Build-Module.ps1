@@ -124,19 +124,6 @@ $output = [System.IO.Path]::GetFullPath($output)
 # Merge-File -inputFile ./Source/formats/_formats.json -outputDir $output
 Merge-File -inputFile ./Source/_functions.json -outputDir $output -verbose
 
-# Build the help
-if ($buildHelp.IsPresent) {
-   Write-Output 'Processing: External help file'
-   Push-Location
-   Set-Location ./.docs
-   Try {
-      ./gen-help.ps1 -verbose
-   }
-   Finally {
-      Pop-Location
-   }
-}
-
 # Write-Output 'Publishing: About help files'
 # Copy-Item -Path ./Source/en-US -Destination "$output/" -Recurse -Force
 
@@ -254,3 +241,16 @@ if ($analyzeScript.IsPresent) {
 if ($runIntegrationTests.IsPresent) {
    Start-IntegrationTests
 }
+
+# Build the help
+if ($buildHelp.IsPresent) {
+   Write-Output 'Processing: External help file'
+   Push-Location
+   Set-Location ./.docs
+   Try {
+      ./gen-help.ps1 -verbose
+   } Finally {
+      Pop-Location
+   }
+}
+
