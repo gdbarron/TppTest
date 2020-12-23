@@ -100,7 +100,7 @@ stages:
     - template: .build/unitTests.yml
       parameters:
         os: 'Windows'
-        buildHelp: 'false'
+        buildHelp: 'true'
 
 - stage: Package
   displayName: Package Management

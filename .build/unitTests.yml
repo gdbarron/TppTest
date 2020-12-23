@@ -1,6 +1,6 @@
 parameters:
   os: ''
-  buildHelp: 'true'
+  buildHelp: 'false'
   CodeCoverage: 'false-dontrun'
 
 steps:
