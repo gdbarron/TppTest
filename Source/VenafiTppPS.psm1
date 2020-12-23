@@ -6,26 +6,24 @@ PowerShell module to access the features of Venafi Trust Protection Platform RES
 Author: Greg Brownstein
 #>
 
-# $folders = @('Enum', 'Classes', 'Public', 'Private')
+$folders = @('Enum', 'Classes', 'Public', 'Private')
 
-# foreach ( $folder in $folders) {
+foreach ( $folder in $folders) {
 
-#     $files = Get-ChildItem -Path "$PSScriptRoot\$folder\*.ps1" -Recurse
+    $files = Get-ChildItem -Path "$PSScriptRoot\$folder\*.ps1" -Recurse
 
-#     Foreach ( $thisFile in $files ) {
-#         Try {
-#             . $thisFile.fullname
-#             if ( $folder -eq 'Public' ) {
-#                 Export-ModuleMember -Function $thisFile.Basename
-#             }
-#         }
-#         Catch {
-#             Write-Error ("Failed to import function {0}: {1}" -f $thisFile.fullname, $folder)
-#         }
-#     }
-# }
-
-. "$PSScriptRoot\venafitppps.functions.ps1"
+    Foreach ( $thisFile in $files ) {
+        Try {
+            . $thisFile.fullname
+            if ( $folder -eq 'Public' ) {
+                Export-ModuleMember -Function $thisFile.Basename
+            }
+        }
+        Catch {
+            Write-Error ("Failed to import function {0}: {1}" -f $thisFile.fullname, $folder)
+        }
+    }
+}
 
 $Script:TppSupportedVersion = ConvertFrom-Json (Get-Content "$PSScriptRoot\Config\SupportedVersion.json" -Raw)
 Export-ModuleMember -variable TppSupportedVersion
