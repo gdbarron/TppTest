@@ -44,8 +44,6 @@ stages:
           # Load the psd1 file so you can read the required modules and import them
           # $manifest = Import-PowerShellDataFile .\dist\*.psd1
 
-          write-output "pat=" & $env:GITHUBPAT
-          write-output "pat=" & $(GITHUBPAT)
           # Import each module
           # $manifest.RequiredModules | ForEach-Object { Import-Module -Name $_ }
 
@@ -56,8 +54,6 @@ stages:
           if($count -ne 0) {
             Write-Host "##vso[task.complete result=Failed;]Static Code Analysis with error count = $count"
           }
-      env:
-        GITHUBPAT: $(GitHubPat)
 
   - job: macOS_Phase
     displayName: Build macOS

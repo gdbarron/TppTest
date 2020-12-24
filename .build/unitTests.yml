@@ -12,7 +12,9 @@ steps:
     ${{ if eq(parameters.buildHelp, 'false') }}:
       script: '.\Build-Module.ps1 -installDep -configuration Release'
     ${{ if eq(parameters.buildHelp, 'true') }}:
-      script: '.\Build-Module.ps1 -installDep -buildHelp -configuration Release'
+      script: '.\Build-Module.ps1 -installDep -buildHelp -configuration Release' -GitHubPat $(GITHUBPAT)
+  env:
+    GITHUBPAT: $(GitHubPat)
 
 # - ${{ if eq(parameters.os, 'Windows') }}:
 #   - task: DotNetCoreCLI@2
