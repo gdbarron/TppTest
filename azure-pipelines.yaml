@@ -10,7 +10,6 @@ variables:
   Folder: 'dist'
   TEAM_CIBUILD: 'true'
   PESTER_VERSION: '5.0.2'
-  GITHUBPAT: $(GitHubPat)
 
 stages:
 - stage: Build
@@ -57,6 +56,8 @@ stages:
           if($count -ne 0) {
             Write-Host "##vso[task.complete result=Failed;]Static Code Analysis with error count = $count"
           }
+      env:
+        GITHUBPAT: $(GitHubPat)
 
   - job: macOS_Phase
     displayName: Build macOS
