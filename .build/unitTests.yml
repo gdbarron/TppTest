@@ -12,7 +12,7 @@ steps:
     ${{ if eq(parameters.buildHelp, 'false') }}:
       script: '.\Build-Module.ps1 -installDep -configuration Release'
     ${{ if eq(parameters.buildHelp, 'true') }}:
-      script: '.\Build-Module.ps1 -installDep -buildHelp -configuration Release' -GitHubPat $(GITHUBPAT)
+      script: '.\Build-Module.ps1 -installDep -buildHelp -configuration Release -GitHubPat $(GITHUBPAT)'
   env:
     GITHUBPAT: $(GitHubPat)
 
