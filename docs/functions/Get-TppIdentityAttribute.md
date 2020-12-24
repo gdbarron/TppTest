@@ -18,24 +18,20 @@ Get attribute values for TPP identity objects.
 ### EXAMPLE 1
 ```
 Get-TppIdentityAttribute -PrefixedUniversalId 'AD+mydomain.com:{1234567890olikujyhtgrfedwsqa}' | format-list
-```
-
 PrefixedUniversalId : AD+mydomain.com:1234567890olikujyhtgrfedwsqa
 Attribute           : @{FullName=CN=greg,OU=Users,DC=mydomain,DC=com; IsContainer=False; IsGroup=False; Name=greg; Prefix=AD+mydomain.com;
                       PrefixedName=AD+mydomain.com:greg; PrefixedUniversal=AD+mydomain.com:1234567890olikujyhtgrfedwsqa; Universal=1234567890olikujyhtgrfedwsqa}
-
 Get basic attributes
+```
 
 ### EXAMPLE 2
 ```
 Get-TppIdentityAttribute -PrefixedUniversalId 'AD+mydomain.com:{1234567890olikujyhtgrfedwsqa}' -Attribute 'Surname'
-```
-
 PrefixedUniversalId                              Attribute
 -------------------                              ---------
 AD+mydomain.com:1234567890olikujyhtgrfedwsqa     @{Surname=Brownstein}
-
 Get specific attribute for user
+```
 
 ## PARAMETERS
 

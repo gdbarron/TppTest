@@ -39,44 +39,38 @@ You have the option of simply getting the data or saving it to a file.
 ### EXAMPLE 1
 ```
 $certs | Get-TppCertificate -Format 'PKCS #7' -OutPath 'c:\temp'
-```
-
 Get one or more certificates
+```
 
 ### EXAMPLE 2
 ```
 $certs | Get-TppCertificate -Format 'PKCS #7' -OutPath 'c:\temp' -IncludeChain
-```
-
 Get one or more certificates with the certificate chain included
+```
 
 ### EXAMPLE 3
 ```
 $certs | Get-TppCertificate -Format 'PKCS #7' -OutPath 'c:\temp' -IncludeChain -FriendlyName 'MyFriendlyName'
-```
-
 Get one or more certificates with the certificate chain included and friendly name attribute specified
+```
 
 ### EXAMPLE 4
 ```
 $certs | Get-TppCertificate -Format 'PKCS #12' -OutPath 'c:\temp' -IncludePrivateKey -SecurePassword ($password | ConvertTo-SecureString -asPlainText -Force)
-```
-
 Get one or more certificates with private key included
+```
 
 ### EXAMPLE 5
 ```
 $certs | Get-TppCertificate -Format 'PKCS #12' -OutPath 'c:\temp' -IncludeChain -IncludePrivateKey -SecurePassword ($password | ConvertTo-SecureString -asPlainText -Force)
-```
-
 Get one or more certificates with private key and certificate chain included
+```
 
 ### EXAMPLE 6
 ```
 $certs | Get-TppCertificate -Format 'PKCS #12' -OutPath 'c:\temp' -IncludeChain -FriendlyName 'MyFriendlyName' -IncludePrivateKey -SecurePassword ($password | ConvertTo-SecureString -asPlainText -Force)
-```
-
 Get one or more certificates with private key and certificate chain included and friendly name attribute specified
+```
 
 ## PARAMETERS
 

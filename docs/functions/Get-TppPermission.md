@@ -33,23 +33,20 @@ All permissions can be retrieved for an object, the default, or for one specific
 ### EXAMPLE 1
 ```
 Find-TppObject -Path '\VED\Policy\My folder' | Get-TppPermission
-```
-
 Get effective permissions for users/groups on a specific policy folder
+```
 
 ### EXAMPLE 2
 ```
 Find-TppObject -Path '\VED\Policy\My folder' | Get-TppPermission -Attribute 'Given Name','Surname'
-```
-
 Get effective permissions on a policy folder including identity attributes for the permissioned users/groups
+```
 
 ### EXAMPLE 3
 ```
 Find-TppObject -Path '\VED\Policy\My folder' | Get-TppPermission -Explicit
-```
-
 Get explicit and implicit permissions for users/groups on a specific policy folder
+```
 
 ## PARAMETERS
 

@@ -39,9 +39,8 @@ Import a certificate with or without private key.
 ### EXAMPLE 1
 ```
 Import-TppCertificate -PolicyPath \ved\policy\mycerts -CertificatePath c:\www.venafitppps.com.cer
-```
-
 Import a certificate
+```
 
 ## PARAMETERS
 

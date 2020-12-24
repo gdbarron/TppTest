@@ -26,16 +26,14 @@ Optionally, you can provision the certificate once the association is complete.
 ### EXAMPLE 1
 ```
 Add-TppCertificateAssocation -CertificatePath '\ved\policy\my cert' -ApplicationPath '\ved\policy\my capi'
-```
-
 Add a single application object association
+```
 
 ### EXAMPLE 2
 ```
 Add-TppCertificateAssocation -Path '\ved\policy\my cert' -ApplicationPath '\ved\policy\my capi' -ProvisionCertificate
-```
-
 Add the association and provision the certificate
+```
 
 ## PARAMETERS
 

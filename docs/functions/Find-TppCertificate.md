@@ -73,58 +73,50 @@ Find certificates based on various attributes
 ### EXAMPLE 1
 ```
 Find-TppCertificate -ExpireBefore "2018-01-01"
-```
-
 Find all certificates expiring before a certain date
+```
 
 ### EXAMPLE 2
 ```
 Find-TppCertificate -ExpireBefore "2018-01-01" -Limit 5
-```
-
 Find 5 certificates expiring before a certain date
+```
 
 ### EXAMPLE 3
 ```
 Find-TppCertificate -ExpireBefore "2018-01-01" -Limit 5 -Offset 2
-```
-
 Find 5 certificates expiring before a certain date, starting at the 3rd certificate found.
+```
 
 ### EXAMPLE 4
 ```
 Find-TppCertificate -Path '\VED\Policy\My Policy'
-```
-
 Find all certificates in a specific path
+```
 
 ### EXAMPLE 5
 ```
 Find-TppCertificate -Issuer 'CN=Example Root CA, O=Venafi,Inc., L=Salt Lake City, S=Utah, C=US'
-```
-
 Find all certificates by issuer
+```
 
 ### EXAMPLE 6
 ```
 Find-TppCertificate -Path '\VED\Policy\My Policy' -Recursive
-```
-
 Find all certificates in a specific path and all subfolders
+```
 
 ### EXAMPLE 7
 ```
 Find-TppCertificate -ExpireBefore "2018-01-01" -Limit 5 | Get-TppCertificateDetail
-```
-
 Get detailed certificate info on the first 5 certificates expiring before a certain date
+```
 
 ### EXAMPLE 8
 ```
 Find-TppCertificate -ExpireBefore "2019-09-01" | Invoke-TppCertificateRenewal
-```
-
 Renew all certificates expiring before a certain date
+```
 
 ## PARAMETERS
 
@@ -252,7 +244,7 @@ Accept wildcard characters: False
 
 ### -Issuer
 Find certificates by issuer.
-Use the CN, O, L, S, and C values from the certificate request.
+Use the?CN, O,?L,?S, and?C?values from the certificate request.
 
 ```yaml
 Type: String
@@ -387,7 +379,7 @@ Accept wildcard characters: False
 ```
 
 ### -SanDns
-Find certificates by Subject Alternate Name (SAN) Distinguished Name Server (DNS).
+Find certificates by Subject Alternate Name (SAN)?Distinguished Name Server (DNS).
 
 ```yaml
 Type: String
@@ -402,7 +394,7 @@ Accept wildcard characters: False
 ```
 
 ### -SanEmail
-Find certificates by SAN Email RFC822.
+Find certificates by SAN?Email RFC822.
 
 ```yaml
 Type: String
@@ -432,7 +424,7 @@ Accept wildcard characters: False
 ```
 
 ### -SanUpn
-Find certificates by SAN User Principal Name (UPN) or OtherName.
+Find certificates by SAN?User Principal Name (UPN)?or OtherName.
 
 ```yaml
 Type: String
@@ -447,7 +439,7 @@ Accept wildcard characters: False
 ```
 
 ### -SanUri
-Find certificates by SAN Uniform Resource Identifier (URI).
+Find certificates by SAN?Uniform Resource Identifier (URI).
 
 ```yaml
 Type: String

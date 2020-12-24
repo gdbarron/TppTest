@@ -18,21 +18,18 @@ Provided with a prefixed universal id, find out if an identity exists.
 ### EXAMPLE 1
 ```
 'local:78uhjny657890okjhhh', 'AD+mydomain.com:azsxdcfvgbhnjmlk09877654321' | Test-TppIdentity
-```
-
 Identity                                       Exists
 --------                                       -----
 local:78uhjny657890okjhhh                      True
 AD+mydomain.com:azsxdcfvgbhnjmlk09877654321    False
-
 Test multiple identities
+```
 
 ### EXAMPLE 2
 ```
 Test-TppIdentity -PrefixedUniversalId 'AD+mydomain.com:azsxdcfvgbhnjmlk09877654321' -ExistOnly
-```
-
 Retrieve existence for only one identity, returns boolean
+```
 
 ## PARAMETERS
 

@@ -17,9 +17,8 @@ Rename an object of any type
 ### EXAMPLE 1
 ```
 Rename-TppObject -Path '\VED\Policy\My Devices\OldDeviceName' -NewName 'NewDeviceName'
-```
-
 Rename device
+```
 
 ## PARAMETERS
 

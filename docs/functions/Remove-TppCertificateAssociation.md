@@ -38,23 +38,20 @@ Optionally, you can remove the application objects and corresponding orphaned de
 ### EXAMPLE 1
 ```
 Remove-TppCertificateAssocation -Path '\ved\policy\my cert' -ApplicationPath '\ved\policy\my capi'
-```
-
 Remove a single application object association
+```
 
 ### EXAMPLE 2
 ```
 Remove-TppCertificateAssocation -Path '\ved\policy\my cert' -ApplicationPath '\ved\policy\my capi' -OrphanCleanup
-```
-
 Disassociate and delete the application object
+```
 
 ### EXAMPLE 3
 ```
 Remove-TppCertificateAssocation -Path '\ved\policy\my cert' -RemoveAll
-```
-
 Remove all certificate associations
+```
 
 ## PARAMETERS
 

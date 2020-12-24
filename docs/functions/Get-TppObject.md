@@ -17,9 +17,8 @@ Get object by path
 ### EXAMPLE 1
 ```
 Get-TppObject -Path '\VED\Policy\My object'
-```
-
 Get an object by full path
+```
 
 ## PARAMETERS
 

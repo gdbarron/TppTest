@@ -25,8 +25,6 @@ If no identity types are selected, all types will be included in the search.
 ### EXAMPLE 1
 ```
 Find-TppIdentity -Name 'greg' -IncludeUsers
-```
-
 FullName          : CN=Greg Brownstein,OU=My Group,DC=my,DC=company,DC=com
 IsContainer       : False
 IsGroup           : False
@@ -35,29 +33,26 @@ Prefix            : AD+company.com
 PrefixedName      : AD+company.com:greg
 PrefixedUniversal : AD+company.com:1234567890asdfghjklmnbvcxz
 Universal         : 1234567890asdfghjklmnbvcxz
-
 Find user identities with the name greg
+```
 
 ### EXAMPLE 2
 ```
 Find-TppIdentity -Name 'greg'
-```
-
 Find all identity types with the name greg
+```
 
 ### EXAMPLE 3
 ```
 'greg', 'brownstein' | Find-TppIdentity
-```
-
 Find all identity types with the name greg and brownstein
+```
 
 ### EXAMPLE 4
 ```
 Find-TppIdentity -Me
-```
-
 Find authenticated user identity and all associated identities
+```
 
 ## PARAMETERS
 
