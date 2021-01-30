@@ -50,23 +50,20 @@ EffectivePolicy switch.
 ### EXAMPLE 1
 ```
 Get-TppAttribute -Path '\VED\Policy\My Folder\myapp.company.com'
-```
-
 Retrieve all configurations for a certificate
+```
 
 ### EXAMPLE 2
 ```
 Get-TppAttribute -Path '\VED\Policy\My Folder\myapp.company.com' -EffectivePolicy
-```
-
 Retrieve all effective configurations for a certificate
+```
 
 ### EXAMPLE 3
 ```
 Get-TppAttribute -Path '\VED\Policy\My Folder\myapp.company.com' -AttributeName 'driver name'
-```
-
 Retrieve all the value for attribute driver name from certificate myapp.company.com
+```
 
 ## PARAMETERS
 

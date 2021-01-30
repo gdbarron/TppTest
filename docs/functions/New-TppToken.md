@@ -32,23 +32,20 @@ Accepts username/password credential, scope, and ClientId to get a token grant f
 ### EXAMPLE 1
 ```
 New-TppToken -AuthServer 'https://mytppserver.example.com' -Scope @{ Certificate = "manage,discover"; Configuration = "manage" } -ClientId 'MyAppId' -Credential $credential
-```
-
 Get a new token with OAuth
+```
 
 ### EXAMPLE 2
 ```
 New-TppToken -AuthServer 'mytppserver.example.com' -Scope @{ Certificate = "manage,discover"; Configuration = "manage" } -ClientId 'MyAppId'
-```
-
 Get a new token with Integrated authentication
+```
 
 ### EXAMPLE 3
 ```
 New-TppToken -AuthServer 'mytppserver.example.com' -Scope @{ Certificate = "manage,discover"; Configuration = "manage" } -ClientId 'MyAppId' -Certificate $cert
-```
-
 Get a new token with certificate authentication
+```
 
 ## PARAMETERS
 

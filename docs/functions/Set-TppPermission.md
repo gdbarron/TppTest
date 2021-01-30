@@ -18,9 +18,8 @@ Determine who has rights for TPP objects and what those rights are
 ### EXAMPLE 1
 ```
 Set-TppPermission -Guid '1234abcd-g6g6-h7h7-faaf-f50cd6610cba' -PrefixedUniversalId 'AD+mydomain.com:azsxdcfvgbhnjmlk09877654321' -Permission $TppPermObject
-```
-
 Permission a user on an object
+```
 
 ## PARAMETERS
 

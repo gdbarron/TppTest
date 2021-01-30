@@ -1,41 +1,35 @@
-# New-TppPolicy
+# Set-TppCodeSignProjectStatus
 
 ## SYNOPSIS
-Add a new policy folder
+Set project status
 
 ## SYNTAX
 
 ```
-New-TppPolicy [-Path] <String> [[-Description] <String>] [-PassThru] [[-TppSession] <TppSession>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-TppCodeSignProjectStatus [-Path] <String> [-Status] <TppCodeSignProjectStatus> [[-TppSession] <TppSession>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add a new policy folder
+Set project status
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-$newPolicy = New-TppPolicy -Path '\VED\Policy\Existing Policy Folder\New Policy Folder' -PassThru
-Create policy returning the policy object created
-```
-
-### EXAMPLE 2
-```
-New-TppPolicy -Path '\VED\Policy\Existing Policy Folder\New Policy Folder' -Description 'this is awesome'
-Create policy with description
+Set-TppCodeSignProject -Path '\ved\code signing\projects\my_project' -Status Pending
+Update project status
 ```
 
 ## PARAMETERS
 
 ### -Path
-DN path to the new policy
+Path of the project to update
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: PolicyDN
+Aliases:
 
 Required: True
 Position: 1
@@ -44,32 +38,19 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Description
-Policy description
+### -Status
+New project status, must have the appropriate perms. 
+Status can be Disabled, Enabled, Draft, or Pending.
 
 ```yaml
-Type: String
+Type: TppCodeSignProjectStatus
 Parameter Sets: (All)
 Aliases:
+Accepted values: Disabled, Enabled, Draft, Pending
 
-Required: False
+Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Return a TppObject representing the newly created policy.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,16 +110,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Path
 ## OUTPUTS
 
-### TppObject, if PassThru provided
+### None
 ## NOTES
 
 ## RELATED LINKS
 
-[http://venafitppps.readthedocs.io/en/latest/functions/New-TppPolicy/](http://venafitppps.readthedocs.io/en/latest/functions/New-TppPolicy/)
+[http://venafitppps.readthedocs.io/en/latest/functions/Set-TppCodeSignProjectStatus/](http://venafitppps.readthedocs.io/en/latest/functions/Set-TppCodeSignProjectStatus/)
 
-[https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/New-TppPolicy.ps1](https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/New-TppPolicy.ps1)
+[https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/Set-TppCodeSignProjectStatus.ps1](https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/Set-TppCodeSignProjectStatus.ps1)
 
-[http://venafitppps.readthedocs.io/en/latest/functions/New-TppObject/](http://venafitppps.readthedocs.io/en/latest/functions/New-TppObject/)
-
-[https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/New-TppObject.ps1](https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/New-TppObject.ps1)
+[https://docs.venafi.com/Docs/20.4SDK/TopNav/Content/SDK/CodeSignSDK/r-SDKc-POST-Codesign-UpdateProjectStatus.php?tocpath=CodeSign%20Protect%20Admin%20REST%C2%A0API%7CProjects%20and%20environments%7C_____14](https://docs.venafi.com/Docs/20.4SDK/TopNav/Content/SDK/CodeSignSDK/r-SDKc-POST-Codesign-UpdateProjectStatus.php?tocpath=CodeSign%20Protect%20Admin%20REST%C2%A0API%7CProjects%20and%20environments%7C_____14)
 

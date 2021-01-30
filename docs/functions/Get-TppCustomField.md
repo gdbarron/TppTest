@@ -17,9 +17,8 @@ Get details about custom fields for either certificates or devices
 ### EXAMPLE 1
 ```
 Get-TppCustomField -Class 'X509 Certificate'
-```
-
 Get custom fields for certificates
+```
 
 ## PARAMETERS
 

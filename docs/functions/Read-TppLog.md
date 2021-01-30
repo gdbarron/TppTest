@@ -1,7 +1,7 @@
 # Read-TppLog
 
 ## SYNOPSIS
-Read entries from the TPP log
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
@@ -27,28 +27,36 @@ Read-TppLog -Path <String> [-Severity <TppEventSeverity>] [-StartTime <DateTime>
 ```
 
 ## DESCRIPTION
-Read entries from the TPP log
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
-Read-TppLog -Limit 10
-```
-
-Get the most recent 10 log items
-
-### EXAMPLE 2
-```
-$capiObject | Read-TppLog
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-Find all events for a specific object
+{{ Add example description here }}
 
 ## PARAMETERS
 
+### -EndTime
+{{ Fill EndTime Description }}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-TppObject which represents a unique object to search for related records
+{{ Fill InputObject Description }}
 
 ```yaml
 Type: TppObject
@@ -62,8 +70,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Limit
+{{ Fill Limit Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
-Path to search for related records
+{{ Fill Path Description }}
 
 ```yaml
 Type: String
@@ -78,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Severity
-Filter records by severity
+{{ Fill Severity Description }}
 
 ```yaml
 Type: TppEventSeverity
@@ -94,22 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-Start time of events
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndTime
-End time of events
+{{ Fill StartTime Description }}
 
 ```yaml
 Type: DateTime
@@ -124,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -Text1
-Filter matching results of Text1
+{{ Fill Text1 Description }}
 
 ```yaml
 Type: String
@@ -139,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Text2
-Filter matching results of Text2
+{{ Fill Text2 Description }}
 
 ```yaml
 Type: String
@@ -153,55 +161,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Value1
-Filter matching results of Value1
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Value2
-Filter matching results of Value2
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Limit
-Specify the number of items to retrieve, starting with most recent. 
-The default is 100 and there is no maximum.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TppSession
-Session object created from New-TppSession method. 
-The value defaults to the script session object $TppSession.
+{{ Fill TppSession Description }}
 
 ```yaml
 Type: TppSession
@@ -210,7 +171,37 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $Script:TppSession
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value1
+{{ Fill Value1 Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value2
+{{ Fill Value2 Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -220,32 +211,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### InputObject
+### TppObject
+
 ## OUTPUTS
 
-### PSCustomObject with properties:
-###     ClientTimestamp
-###     Component
-###     ComponentId
-###     ComponentSubsystem
-###     Data
-###     Grouping
-###     Id
-###     Name
-###     ServerTimestamp
-###     Severity
-###     SourceIP
-###     Text1
-###     Text2
-###     Value1
-###     Value2
+### System.Object
 ## NOTES
 
 ## RELATED LINKS
-
-[http://venafitppps.readthedocs.io/en/latest/functions/Read-TppLog/](http://venafitppps.readthedocs.io/en/latest/functions/Read-TppLog/)
-
-[https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/Read-TppLog.ps1](https://github.com/gdbarron/VenafiTppPS/blob/master/VenafiTppPS/Code/Public/Read-TppLog.ps1)
-
-[https://docs.venafi.com/Docs/18.1SDK/TopNav/Content/SDK/WebSDK/API_Reference/r-SDK-GET-Log.php?tocpath=REST%20API%20reference%7CLog%20programming%20interfaces%7C_____1](https://docs.venafi.com/Docs/18.1SDK/TopNav/Content/SDK/WebSDK/API_Reference/r-SDK-GET-Log.php?tocpath=REST%20API%20reference%7CLog%20programming%20interfaces%7C_____1)
-

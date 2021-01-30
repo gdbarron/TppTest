@@ -29,16 +29,14 @@ This could be an access token retrieved from this module or from other means.
 ### EXAMPLE 1
 ```
 Revoke-TppToken
-```
-
 Revoke token stored in session variable from New-TppSession
+```
 
 ### EXAMPLE 2
 ```
 Revoke-TppToken -AuthServer venafi.company.com -AccessToken x7xc8h4387dkgheysk
-```
-
 Revoke a token obtained from TPP, not necessarily via VenafiTppPS
+```
 
 ## PARAMETERS
 

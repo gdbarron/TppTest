@@ -39,59 +39,50 @@ Find objects by path, class, or pattern.
 ### EXAMPLE 1
 ```
 Find-TppObject -Path '\VED\Policy'
-```
-
 Get all objects in the root of a specific folder
+```
 
 ### EXAMPLE 2
 ```
 Find-TppObject -Path '\VED\Policy\My Folder' -Recursive
-```
-
 Get all objects in a folder and subfolders
+```
 
 ### EXAMPLE 3
 ```
 Find-TppObject -Path '\VED\Policy' -Pattern 'test'
-```
-
 Get items in a specific folder filtering the path
+```
 
 ### EXAMPLE 4
 ```
 Find-TppObject -Class 'iis6'
-```
-
 Get all objects of the type iis6
+```
 
 ### EXAMPLE 5
 ```
 Find-TppObject -Class 'iis6' -Pattern 'test*'
-```
-
 Get all objects of the type iis6 filtering the path
+```
 
 ### EXAMPLE 6
 ```
 Find-TppObject -Class 'iis6', 'capi'
-```
-
 Get all objects of the type iis6 or capi
+```
 
 ### EXAMPLE 7
 ```
 Find-TppObject -Pattern 'test*'
+Find objects with the specific name.  All objects will be searched.
 ```
-
-Find objects with the specific name. 
-All objects will be searched.
 
 ### EXAMPLE 8
 ```
 Find-TppObject -Pattern 'test*' -Attribute 'Consumers'
-```
-
 Find all objects where the specific attribute matches the pattern
+```
 
 ## PARAMETERS
 
@@ -113,7 +104,6 @@ Accept wildcard characters: False
 ### -Pattern
 Filter against object paths.
 If the Attribute parameter is provided, this will filter against an object's attribute values instead of the path.
-
 Follow the below rules:
 - To list DNs that include an asterisk (*) or question mark (?), prepend two backslashes (\\\\).
 For example, \\\\*.MyCompany.net treats the asterisk as a literal character and returns only certificates with DNs that match *.MyCompany.net.
