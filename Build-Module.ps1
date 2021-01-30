@@ -225,16 +225,16 @@ if ($ipmo.IsPresent -or $analyzeScript.IsPresent -or $runIntegrationTests.IsPres
 # Run this last so the results can be seen even if tests were also run
 # if not the results scroll off and my not be in the buffer.
 # run PSScriptAnalyzer
-if ($analyzeScript.IsPresent) {
-   Write-Output "Starting static code analysis..."
-   if ($null -eq $(Get-Module -Name PSScriptAnalyzer)) {
-      Install-Module -Name PSScriptAnalyzer -Repository PSGallery -Force -Scope CurrentUser
-   }
+# if ($analyzeScript.IsPresent) {
+#    Write-Output "Starting static code analysis..."
+#    if ($null -eq $(Get-Module -Name PSScriptAnalyzer)) {
+#       Install-Module -Name PSScriptAnalyzer -Repository PSGallery -Force -Scope CurrentUser
+#    }
 
-   $r = Invoke-ScriptAnalyzer -Path $output -Recurse
-   $r | ForEach-Object { Write-Host "##vso[task.logissue type=$($_.Severity);sourcepath=$($_.ScriptPath);linenumber=$($_.Line);columnnumber=$($_.Column);]$($_.Message)" }
-   Write-Output "Static code analysis complete."
-}
+#    $r = Invoke-ScriptAnalyzer -Path $output -Recurse
+#    $r | ForEach-Object { Write-Host "##vso[task.logissue type=$($_.Severity);sourcepath=$($_.ScriptPath);linenumber=$($_.Line);columnnumber=$($_.Column);]$($_.Message)" }
+#    Write-Output "Static code analysis complete."
+# }
 
 # run integration tests with Pester
 if ($runIntegrationTests.IsPresent) {
@@ -244,27 +244,16 @@ if ($runIntegrationTests.IsPresent) {
 # Build the help
 if ($buildHelp.IsPresent) {
    Write-Output 'Building help'
-   # Push-Location
-   # Set-Location ./.docs
-   # Try {
-   #    ./gen-help.ps1 -verbose
-   # } Finally {
-   #    Pop-Location
-   # }
-   # Install-PackageProvider -Name Nuget -Scope CurrentUser -Force -Confirm:$false
+
    if (-not (Get-Module platyPS -ListAvailable)) {
       Install-Module platyPS -Scope CurrentUser -Force
    }
 
    $branch = $env:BUILD_SOURCEBRANCHNAME
 
-   # $manifestPath = '..\Source\VenafiTppPS.psd1'
    $manifest = Import-PowerShellDataFile .\Source\VenafiTppPS.psd1
    [version]$version = $Manifest.ModuleVersion
 
-   # "Loading Module from $manifestPath to update docs"
-   # Remove-Module VenafiTppPS -Force -ea SilentlyContinue -Verbose
-   # platyPS + AppVeyor requires the module to be loaded in Global scope
    Import-Module "$output/VenafiTppPS.psd1" -Force
 
    #Build YAMLText starting with the header
@@ -322,7 +311,7 @@ if ($buildHelp.IsPresent) {
       git.exe add *.md
       git.exe add ".\mkdocs.yml"
       git.exe status -v
-      git.exe commit -m "Updated to v$version ***NO_CI***"
+      git.exe commit -m "Docs updated to v$version ***NO_CI***"
 
       # if we are performing pull request validation, do not push the code to the repo
       if ( $env:BUILD_REASON -eq 'PullRequest') {
